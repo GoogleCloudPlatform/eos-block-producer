@@ -2,13 +2,11 @@
 # producer-name =
 
 # the location of the state-history directory (absolute path or relative to application data dir) (eosio::state_history_plugin)
-#state-history-dir = "/home/gcpbp/.local/share/eosio/nodeos/data/snapshots"
-#PUT IN STATE HISTORY DIRECTORY"state-history"
+# state-history-dir = "/home/gcpbp/.local/share/eosio/nodeos/data/snapshots"
+
 
 # Maximum size (in MiB) of the chain state database (eosio::chain_plugin)
 chain-state-db-size-mb = 32384
-# IS IT OK FOR ME TO PUT SUPER LARGE NUMBER HERE
-# https://github.com/EOSIO/eos/issues/4937
 
 # An externally accessible host:port for identifying this node. Defaults to p2p-listen-endpoint. (eosio::net_plugin)
 p2p-server-address = ${peer_ip_address}:80
@@ -17,7 +15,7 @@ p2p-server-address = ${peer_ip_address}:80
 http-server-address = 0.0.0.0:8888
 
 # The actual host:port used to listen for incoming p2p connections. (eosio::net_plugin)
-p2p-listen-endpoint = 0.0.0.0:9876
+# p2p-listen-endpoint = 0.0.0.0:9876
 
 # Key=Value pairs in the form <public-key>=<provider-spec>
 # Where:
@@ -33,24 +31,24 @@ p2p-listen-endpoint = 0.0.0.0:9876
 # signature-provider = EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV=KEY:5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3
 
 # The name supplied to identify this node amongst the peers. (eosio::net_plugin)
-agent-name = "mandar-chainnodetest"
+agent-name = "chainnodetest"
 
 # Plugin(s) to enable, may be specified multiple times
 # plugin 4 every node type
 plugin = eosio::chain_plugin
 plugin = eosio::producer_plugin
-plugin = eosio::producer_api_plugin
+# plugin = eosio::producer_api_plugin
 plugin = eosio::net_plugin
-plugin = eosio::net_api_plugin
-plugin = eosio::db_size_api_plugin
-#plugin = eosio::state_history_plugin --disable-replay-opts
+# plugin = eosio::net_api_plugin
+# plugin = eosio::db_size_api_plugin
+# plugin = eosio::state_history_plugin 
 
 # uncomment for chain node only
-plugin = eosio::chain_api_plugin
-plugin = eosio::http_plugin
+# plugin = eosio::chain_api_plugin
+# plugin = eosio::http_plugin
 
 # the location of the blocks directory (absolute path or relative to application data dir) (eosio::chain_plugin)
-blocks-dir = "blocks"
+# blocks-dir = "blocks"
 
 # the location of the protocol_features directory (absolute path or relative to application config dir) (eosio::chain_plugin)
 # protocol-features-dir = "protocol_features"
@@ -65,7 +63,7 @@ blocks-dir = "blocks"
 #  (eosio::chain_plugin)
 # wasm-runtime = wabt https://github.com/atticlab/eos-bp-performance
 # OR TRY THE FOLLOWING BELOW:
-wasm-runtime = eos-vm-jit
+# wasm-runtime = eos-vm-jit
 eos-vm-oc-compile-threads = 4
 eos-vm-oc-enable = 1
 
@@ -88,8 +86,8 @@ reversible-blocks-db-size-mb = 1024
 chain-threads = 8
 
 # print contract's output to console (eosio::chain_plugin)
-contracts-console = false
-#prints print statements in any contract from a tx, so setting to false for now.
+# contracts-console = false
+# prints print statements in any contract from a tx, so setting to false for now.
 
 # Account added to actor whitelist (may specify multiple times) (eosio::chain_plugin)
 # actor-whitelist =
@@ -127,7 +125,7 @@ contracts-console = false
 # In "full" mode all incoming blocks will be fully validated.
 # In "light" mode all incoming blocks headers will be fully validated; transactions in those validated blocks will be trusted
 #  (eosio::chain_plugin)
-validation-mode = full
+# validation-mode = full
 # signing node and peer node should be full, chain api can be 'light'
 
 # Disable the check which subjectively fails a transaction if a contract bills more RAM to another account within the context of a notification handler (i.e. when the receiver is not the code of the action). (eosio::chain_plugin)
@@ -154,8 +152,8 @@ validation-mode = full
 # eos-vm-oc-cache-size-mb = 1024
 
 # Enable EOS VM OC tier-up runtime (eosio::chain_plugin)
-#eos-vm-oc-enable = true
-# DO WE NEED??
+# eos-vm-oc-enable = true
+
 
 # enable queries to find accounts by various metadata. (eosio::chain_plugin)
 # enable-account-queries = false
@@ -201,7 +199,7 @@ access-control-allow-headers = *
 # access-control-max-age =
 
 # Specify if Access-Control-Allow-Credentials: true should be returned on each request. (eosio::http_plugin)
-access-control-allow-credentials = false
+# access-control-allow-credentials = false
 
 # The maximum body size in bytes allowed for incoming RPC requests (eosio::http_plugin)
 # max-body-size = 1048576
@@ -307,13 +305,13 @@ p2p-peer-address = p2p.meet.one:9876
 p2p-peer-address = node1.eoscannon.io:59876
 
 # Maximum number of client nodes from any single IP address (eosio::net_plugin)
-p2p-max-nodes-per-host = 1
+# p2p-max-nodes-per-host = 1
 
 # Allow transactions received over p2p network to be evaluated and relayed if valid. (eosio::net_plugin)
 # p2p-accept-transactions = true
 
 # Can be 'any' or 'producers' or 'specified' or 'none'. If 'specified', peer-key must be specified at least once. If only 'producers', peer-key is not required. 'producers' and 'specified' may be combined. (eosio::net_plugin)
-allowed-connection = any
+# allowed-connection = any
 
 # Optional public key of peer allowed to connect.  May be used multiple times. (eosio::net_plugin)
 # peer-key =
@@ -325,7 +323,7 @@ allowed-connection = any
 max-clients = 100
 
 # number of seconds to wait before cleaning up dead connections (eosio::net_plugin)
-connection-cleanup-period = 30
+# connection-cleanup-period = 30
 
 # max connection cleanup time per cleanup call in millisec (eosio::net_plugin)
 # max-cleanup-time-msec = 10
@@ -359,7 +357,7 @@ sync-fetch-span = 1000
 # peer-log-format = ["$${_name}" $${_ip}:$${_port}]
 
 # Enable block production, even if the chain is stale. (eosio::producer_plugin)
-enable-stale-production = false
+# enable-stale-production = false
 
 # Start this node in a state where production is paused (eosio::producer_plugin)
 pause-on-startup = true
@@ -368,7 +366,7 @@ pause-on-startup = true
 max-transaction-time = 150000
 
 # Limits the maximum age (in seconds) of the DPOS Irreversible Block for a chain this node will produce blocks on (use negative value to indicate unlimited) (eosio::producer_plugin)
-max-irreversible-block-age = -1
+# max-irreversible-block-age = -1
 
 # Limits the maximum time (in milliseconds) that is allowed for sending blocks to a keosd provider for signing (eosio::producer_plugin)
 # keosd-provider-timeout = 5
@@ -422,7 +420,7 @@ max-irreversible-block-age = -1
 # chain-state-history = false
 
 # the endpoint upon which to listen for incoming connections. Caution: only expose this port to your internal network. (eosio::state_history_plugin)
-state-history-endpoint = 0.0.0.0:8887
+# state-history-endpoint = 0.0.0.0:8887
 
 # enable debug mode for trace history (eosio::state_history_plugin)
 
@@ -456,7 +454,7 @@ state-history-endpoint = 0.0.0.0:8887
 # trace-no-abis =
 
 # Lag in number of blocks from the head block when selecting the reference block for transactions (-1 means Last Irreversible Block) (eosio::txn_test_gen_plugin)
-txn-reference-block-lag = 0
+# txn-reference-block-lag = 0
 
 # Number of worker threads in txn_test_gen thread pool (eosio::txn_test_gen_plugin)
 # txn-test-gen-threads = 2
